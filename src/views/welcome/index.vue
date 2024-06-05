@@ -211,7 +211,7 @@ const langugeOption = {
             </div>
           </template>
           <!-- card body -->
-          <div :style="{ width: '700px', height: '360px' }">
+          <div :style="{ width: '100%', height: '360px' }">
             <BaseEcharts :options="option" />
           </div>
         </el-card>
@@ -228,7 +228,7 @@ const langugeOption = {
             </div>
           </template>
           <!-- card body -->
-          <div :style="{ width: '700px', height: '360px' }">
+          <div :style="{ width: '100%', height: '360px' }">
             <BaseEcharts :options="langugeOption" />
           </div>
         </el-card>
