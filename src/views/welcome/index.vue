@@ -1,157 +1,170 @@
 <script setup lang="ts">
 defineOptions({
-  name: "Welcome"
+  name: 'Welcome',
 });
-import BaseEcharts from "@/components/baseEcharts/index.vue";
+import BaseEcharts from '@/components/baseEcharts/index.vue';
+import { getText } from '@/api/get';
+import { ref } from 'vue';
+
+//掉用封装好厚的API以及Axios
+const Textmeseage = ref<string>();
+getText()
+  .then(response => {
+    Textmeseage.value = response.data.content;
+    console.log(Textmeseage.value);
+  })
+  .catch(() => {
+    console.log('erro');
+  });
 const option = {
   tooltip: {
-    trigger: "axis",
+    trigger: 'axis',
     axisPointer: {
-      type: "shadow"
-    }
+      type: 'shadow',
+    },
   },
   legend: {},
   grid: {
-    left: "3%",
-    right: "4%",
-    bottom: "3%",
-    containLabel: true
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true,
   },
   xAxis: [
     {
-      type: "category",
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    }
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
   ],
   yAxis: [
     {
-      type: "value"
-    }
+      type: 'value',
+    },
   ],
   series: [
     {
-      name: "Direct",
-      type: "bar",
+      name: 'Direct',
+      type: 'bar',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [320, 332, 301, 334, 390, 330, 320]
+      data: [320, 332, 301, 334, 390, 330, 320],
     },
     {
-      name: "Email",
-      type: "bar",
-      stack: "Ad",
+      name: 'Email',
+      type: 'bar',
+      stack: 'Ad',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [120, 132, 101, 134, 90, 230, 210]
+      data: [120, 132, 101, 134, 90, 230, 210],
     },
     {
-      name: "Union Ads",
-      type: "bar",
-      stack: "Ad",
+      name: 'Union Ads',
+      type: 'bar',
+      stack: 'Ad',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [220, 182, 191, 234, 290, 330, 310]
+      data: [220, 182, 191, 234, 290, 330, 310],
     },
     {
-      name: "Video Ads",
-      type: "bar",
-      stack: "Ad",
+      name: 'Video Ads',
+      type: 'bar',
+      stack: 'Ad',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [150, 232, 201, 154, 190, 330, 410]
+      data: [150, 232, 201, 154, 190, 330, 410],
     },
     {
-      name: "Search Engine",
-      type: "bar",
+      name: 'Search Engine',
+      type: 'bar',
       data: [862, 1018, 964, 1026, 1679, 1600, 1570],
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
       markLine: {
         lineStyle: {
-          type: "dashed"
+          type: 'dashed',
         },
-        data: [[{ type: "min" }, { type: "max" }]]
-      }
+        data: [[{ type: 'min' }, { type: 'max' }]],
+      },
     },
     {
-      name: "Baidu",
-      type: "bar",
+      name: 'Baidu',
+      type: 'bar',
       barWidth: 5,
-      stack: "Search Engine",
+      stack: 'Search Engine',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [620, 732, 701, 734, 1090, 1130, 1120]
+      data: [620, 732, 701, 734, 1090, 1130, 1120],
     },
     {
-      name: "Google",
-      type: "bar",
-      stack: "Search Engine",
+      name: 'Google',
+      type: 'bar',
+      stack: 'Search Engine',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [120, 132, 101, 134, 290, 230, 220]
+      data: [120, 132, 101, 134, 290, 230, 220],
     },
     {
-      name: "Bing",
-      type: "bar",
-      stack: "Search Engine",
+      name: 'Bing',
+      type: 'bar',
+      stack: 'Search Engine',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [60, 72, 71, 74, 190, 130, 110]
+      data: [60, 72, 71, 74, 190, 130, 110],
     },
     {
-      name: "Others",
-      type: "bar",
-      stack: "Search Engine",
+      name: 'Others',
+      type: 'bar',
+      stack: 'Search Engine',
       emphasis: {
-        focus: "series"
+        focus: 'series',
       },
-      data: [62, 82, 91, 84, 109, 110, 120]
-    }
-  ]
+      data: [62, 82, 91, 84, 109, 110, 120],
+    },
+  ],
 };
 
 const langugeOption = {
   title: {
-    text: "代码量",
+    text: '代码量',
 
-    left: "center"
+    left: 'center',
   },
   tooltip: {
-    trigger: "item"
+    trigger: 'item',
   },
   legend: {
-    orient: "vertical",
-    left: "left"
+    orient: 'vertical',
+    left: 'left',
   },
   series: [
     {
-      name: "Access From",
-      type: "pie",
-      radius: "50%",
+      name: 'Access From',
+      type: 'pie',
+      radius: '50%',
       data: [
-        { value: 1048, name: "Search Engine" },
-        { value: 735, name: "Direct" },
-        { value: 580, name: "Email" },
-        { value: 484, name: "Union Ads" },
-        { value: 300, name: "Video Ads" }
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' },
       ],
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: "rgba(0, 0, 0, 0.5)"
-        }
-      }
-    }
-  ]
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+        },
+      },
+    },
+  ],
 };
 </script>
 
@@ -173,7 +186,7 @@ const langugeOption = {
           </template>
           <!-- card body -->
           <p class="opacity-60">
-            一个人几乎可以在任何他怀有无限热忱的事情上成功。
+            {{ Textmeseage }}
           </p>
           <p class="mt-1 text-right text-sm text-12 opacity-40">
             —— 查尔斯·史考伯
