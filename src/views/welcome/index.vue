@@ -7,15 +7,27 @@ import { getText } from '@/api/get';
 import { ref } from 'vue';
 
 //掉用封装好厚的API以及Axios
-const Textmeseage = ref<string>();
+const TextMessage = ref<{
+  id: number;
+  content: string;
+  form: string;
+  creator: string;
+}>({
+  id: 0,
+  content: '',
+  form: '',
+  creator: '',
+});
+
 getText()
   .then(response => {
-    Textmeseage.value = response.data.content;
-    console.log(Textmeseage.value);
+    TextMessage.value = response.data;
+    console.log(TextMessage.value);
   })
   .catch(() => {
     console.log('erro');
   });
+
 const option = {
   tooltip: {
     trigger: 'axis',
@@ -146,15 +158,15 @@ const langugeOption = {
   },
   series: [
     {
-      name: 'Access From',
+      name: '占比量',
       type: 'pie',
       radius: '50%',
       data: [
-        { value: 1048, name: 'Search Engine' },
-        { value: 735, name: 'Direct' },
-        { value: 580, name: 'Email' },
-        { value: 484, name: 'Union Ads' },
-        { value: 300, name: 'Video Ads' },
+        { value: 1048, name: 'TypeScript' },
+        { value: 885, name: 'Vue3' },
+        { value: 480, name: 'JavaScript' },
+        { value: 484, name: 'SCSS' },
+        { value: 300, name: 'HTML&Dockerfile' },
       ],
       emphasis: {
         itemStyle: {
@@ -186,10 +198,10 @@ const langugeOption = {
           </template>
           <!-- card body -->
           <p class="opacity-60">
-            {{ Textmeseage }}
+            {{ TextMessage.content }}
           </p>
           <p class="mt-1 text-right text-sm text-12 opacity-40">
-            —— 查尔斯·史考伯
+            —— {{ TextMessage.form }}
           </p>
         </el-card>
       </el-col>

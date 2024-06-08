@@ -28,7 +28,7 @@ export type TextResult = {
 //data传参
   export const getText = (data?: object) => {
     //类型为 any 不是很规范，建议写一个接口来规范类型
-    return http.request<any>("get",ApiObject.jokeApi , { data });
+    return http.request<any>("get",ApiObject.literatureapi, { data });
 };
   
 export const getWeather = (data?: object) => {
