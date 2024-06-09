@@ -3,20 +3,20 @@
     ref="echartsRef"
     :style="{
       width: width,
-      height: height
+      height: height,
     }"
   />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, PropType } from "vue";
-import { useEcharts, EChartsCoreOption } from "@/hooks/useEcharts"; // 引入hooks
+import { ref, onMounted, watch, PropType } from 'vue';
+import { useEcharts, EChartsCoreOption } from '@/hooks/useEcharts'; // 引入hooks
 
 const props = defineProps({
   options: { type: Object as PropType<EChartsCoreOption>, required: true },
-  height: { type: String, default: "100%" },
-  width: { type: String, default: "100%" },
-  themeColors: { type: Array as PropType<string[]>, default: () => [] }
+  height: { type: String, default: '100%' },
+  width: { type: String, default: '100%' },
+  themeColors: { type: Array as PropType<string[]>, default: () => [] },
 });
 
 const echartsRef = ref();
