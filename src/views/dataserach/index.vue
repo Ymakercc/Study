@@ -85,24 +85,24 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: "dataserach"
+  name: 'dataserach',
 });
-import { ref } from "vue";
-import Pie from "./components/pie.vue";
-import Curve from "./components/curve.vue";
+import { ref } from 'vue';
+import Pie from './components/pie.vue';
+import Curve from './components/curve.vue';
 
 const tabActive = ref(1);
 
 const tab = [
-  { label: "未来7日", name: 1 },
-  { label: "近七日", name: 2 },
-  { label: "近一月", name: 3 },
-  { label: "近三月", name: 4 },
-  { label: "近半年", name: 5 },
-  { label: "近一年", name: 6 }
+  { label: '未来7日', name: 1 },
+  { label: '近七日', name: 2 },
+  { label: '近一月', name: 3 },
+  { label: '近三月', name: 4 },
+  { label: '近半年', name: 5 },
+  { label: '近一年', name: 6 },
 ];
 </script>
 
 <style scoped lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>
