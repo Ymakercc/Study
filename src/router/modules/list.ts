@@ -1,12 +1,9 @@
-
-
-
 export default {
   path: "/list",
   redirect: "/list/card",
   meta: {
     icon: "ri:list-check",
-    title: "biaodan",
+    title: "商品管理",
     
   },
   children: [
@@ -16,7 +13,7 @@ export default {
       component: () => import("@/views/list/card/index.vue"),
       meta: {
         icon: "ri:bank-card-line",
-        title: "biaodan",
+        title: "详情页面",
         showParent: true
       }
     }
