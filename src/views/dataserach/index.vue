@@ -18,7 +18,8 @@
               <div class="img-box">
                 <img src="./images/date.png" alt="" />
               </div>
-              <span class="left-number">848.13</span>
+              <!-- <span class="left-number">848.13</span> -->
+                <AnimatedNumber class="left-number" style="display:inline-block" duration="2000"  :from="0" :to="84813"></AnimatedNumber>
             </div>
           </el-col>
           <el-col class="mb40" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
@@ -27,28 +28,32 @@
                 <div class="traffic-img">
                   <img src="./images/add_person.png" alt="" />
                 </div>
-                <span class="item-value">999</span>
+                <!-- <span class="item-value">999</span> -->
+                <AnimatedNumber class="item-value" style="display:inline-block" duration="2000"  :from="0" :to="999"></AnimatedNumber>
                 <span class="traffic-name sle">待结算订单</span>
               </div>
               <div class="gitHub-traffic traffic-box">
                 <div class="traffic-img">
                   <img src="./images/add_team.png" alt="" />
                 </div>
-                <span class="item-value">220</span>
+                <!-- <span class="item-value">220</span> -->
+                <AnimatedNumber class="item-value" style="display:inline-block" duration="2000"  :from="0" :to="220"></AnimatedNumber>
                 <span class="traffic-name sle">待审核订单</span>
               </div>
               <div class="today-traffic traffic-box">
                 <div class="traffic-img">
                   <img src="./images/today.png" alt="" />
                 </div>
-                <span class="item-value">4521</span>
+                <!-- <span class="item-value">4521</span> -->
+                <AnimatedNumber class="item-value" style="display:inline-block" duration="2000"  :from="0" :to="4521"></AnimatedNumber>
                 <span class="traffic-name sle">今日访问量</span>
               </div>
               <div class="yesterday-traffic traffic-box">
                 <div class="traffic-img">
                   <img src="./images/book_sum.png" alt="" />
                 </div>
-                <span class="item-value">4002</span>
+                <!-- <span class="item-value">4002</span> -->
+                <AnimatedNumber class="item-value" style="display:inline-block" duration="2000"  :from="0" :to="4002"></AnimatedNumber>
                 <span class="traffic-name sle">昨日访问量</span>
               </div>
             </div>
