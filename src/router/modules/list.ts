@@ -3,7 +3,7 @@ export default {
   redirect: "/list/card",
   meta: {
     icon: "ri:list-check",
-    title: "商品管理",
+    title: "产品管理",
     
   },
   children: [
@@ -13,7 +13,7 @@ export default {
       component: () => import("@/views/list/card/index.vue"),
       meta: {
         icon: "ri:bank-card-line",
-        title: "详情页面",
+        title: "商品管理",
         showParent: true
       }
     }
