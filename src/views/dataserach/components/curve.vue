@@ -2,21 +2,27 @@
   <div class="echarts">
     <BaseEcharts :options="option" />
   </div>
+  <div class="echarts">
+    <BaseEcharts :options="option" />
+  </div>
 </template>
 
 <script setup lang="ts" name="cure">
 import BaseEcharts from '@/components/baseEcharts/index.vue';
-
+interface valueListProps {}
+const props = defineProps({
+  valueList: { type: Array, required: true },
+});
 const curveData = [
-  { value: 50, spotName: '7月1日' },
-  { value: 60, spotName: '7月2日' },
-  { value: 65, spotName: '7月3日' },
-  { value: 70, spotName: '7月4日' },
-  { value: 72, spotName: '7月5日' },
-  { value: 92, spotName: '7月6日' },
-  { value: 68, spotName: '7月7日' },
-  { value: 80, spotName: '7月8日' },
-  { value: 90, spotName: '7月9日' },
+  { value: props.valueList[0], spotName: '7月1日' },
+  { value: props.valueList[1], spotName: '7月2日' },
+  { value: props.valueList[2], spotName: '7月3日' },
+  { value: props.valueList[3], spotName: '7月4日' },
+  { value: props.valueList[4], spotName: '7月5日' },
+  { value: props.valueList[5], spotName: '7月6日' },
+  { value: props.valueList[6], spotName: '7月7日' },
+  { value: props.valueList[7], spotName: '7月8日' },
+  { value: props.valueList[8], spotName: '7月9日' },
 ];
 
 const option = {
