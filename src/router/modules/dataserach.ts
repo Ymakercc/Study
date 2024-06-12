@@ -10,7 +10,7 @@ export default {
       name: "Dataserach",
       component: () => import("@/views/dataserach/index.vue"),
       meta: {
-        title: "访问数据",
+        title: "商品销售与访问数据",
         // 通过设置showParent为true，显示父级
         showParent: true
       }

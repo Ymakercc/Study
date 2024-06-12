@@ -8,13 +8,13 @@
 import BaseEcharts from "@/components/baseEcharts/index.vue";
 
 const pieData = [
-  { value: 5000, name: "Gitee 访问量" },
-  { value: 5000, name: "GitHub 访问量" }
+  { value: 4521, name: "今日 访问量" },
+  { value: 4002, name: "昨日 访问量" }
 ];
 
 const option = {
   title: {
-    text: "Gitee / GitHub",
+    text: "今日访问量/昨日访问量",
     subtext: "访问占比",
     left: "56%",
     top: "45%",

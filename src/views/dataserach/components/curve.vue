@@ -8,15 +8,15 @@
 import BaseEcharts from '@/components/baseEcharts/index.vue';
 
 const curveData = [
-	{ value: 30, spotName: '掘金' },
-	{ value: 90, spotName: 'CSDN' },
-	{ value: 10, spotName: 'Gitee' },
-	{ value: 70, spotName: 'GitHub' },
-	{ value: 20, spotName: '知乎' },
-	{ value: 60, spotName: 'MyBlog' },
-	{ value: 55, spotName: '简书' },
-	{ value: 80, spotName: 'StackOverFlow' },
-	{ value: 50, spotName: '博客园' },
+	{ value: 50, spotName: '7月1日' },
+	{ value: 60, spotName: '7月2日' },
+	{ value: 65, spotName: '7月3日' },
+	{ value: 70, spotName: '7月4日' },
+	{ value: 72, spotName: '7月5日' },
+	{ value: 92, spotName: '7月6日' },
+	{ value: 68, spotName: '7月7日' },
+	{ value: 80, spotName: '7月8日' },
+	{ value: 90, spotName: '7月9日' },
 ];
 
 const option = {
