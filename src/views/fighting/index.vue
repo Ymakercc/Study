@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineOptions({
-  name: ""
+  name: '',
 });
 </script>
 
 <template>
-  <div>test</div>
+  <div></div>
 </template>
 
 <style lang="scss" scoped></style>

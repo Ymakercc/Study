@@ -2,6 +2,9 @@
   <div class="echarts">
     <BaseEcharts :options="option" />
   </div>
+  <div class="echarts">
+    <BaseEcharts :options="option" />
+  </div>
 </template>
 
 <script setup lang="ts" name="cure">
@@ -23,6 +26,15 @@ const curveData = [
 ];
 
 const option = {
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: 'transparent',
+    axisPointer: {
+      type: 'none',
+    },
+    padding: 0,
+    formatter: (p: any) => {
+      let dom = `<div style="width:100%; height: 70px !important; display:flex;flex-direction: column;justify-content: space-between;padding:10px;box-sizing: border-box;
   tooltip: {
     trigger: 'axis',
     backgroundColor: 'transparent',
