@@ -1,20 +1,20 @@
 <script lang="ts" setup>
-import { h, onMounted, ref, useSlots } from "vue";
-import { type TippyOptions, useTippy } from "vue-tippy";
+import { h, onMounted, ref, useSlots } from 'vue';
+import { type TippyOptions, useTippy } from 'vue-tippy';
 
 defineOptions({
-  name: "ReText"
+  name: 'ReText',
 });
 
 const props = defineProps({
   // 行数
   lineClamp: {
-    type: [String, Number]
+    type: [String, Number],
   },
   tippyProps: {
     type: Object as PropType<TippyOptions>,
-    default: () => ({})
-  }
+    default: () => ({}),
+  },
 });
 
 const $slots = useSlots();
@@ -34,7 +34,7 @@ const isTextEllipsis = (el: HTMLElement) => {
 
 const getTippyProps = () => ({
   content: h($slots.content || $slots.default),
-  ...props.tippyProps
+  ...props.tippyProps,
 });
 
 function handleHover(event: MouseEvent) {
@@ -56,7 +56,7 @@ onMounted(() => {
     v-bind="{
       truncated: !lineClamp,
       lineClamp,
-      ...$attrs
+      ...$attrs,
     }"
     ref="textRef"
     @mouseover.self="handleHover"

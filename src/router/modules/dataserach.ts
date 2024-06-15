@@ -2,7 +2,8 @@
 export default {
   path: "/dataserach",
   meta: {
-    title: "数据可视化"
+    title: "数据可视化",
+    icon:'teenyicons:area-chart-outline'
   },
   children: [
     {

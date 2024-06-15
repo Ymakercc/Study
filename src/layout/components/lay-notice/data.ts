@@ -57,9 +57,9 @@ export const noticesData: TabItem[] = [
     list: [
       {
         avatar: "",
-        title: "第三方紧急代码变更",
+        title: "作业提交",
         description:
-          "小林提交于 2024-05-10，需在 2024-05-11 前完成代码变更任务",
+          "提交于 2024-06-12，需在 2024-06-20 前完成代码变更任务",
         datetime: "",
         extra: "马上到期",
         status: "danger",
@@ -67,8 +67,8 @@ export const noticesData: TabItem[] = [
       },
       {
         avatar: "",
-        title: "版本发布",
-        description: "指派小铭于 2024-06-18 前完成更新并发布",
+        title: "作业提交",
+        description: "提交于 2024-06-12，需在 2024-06-20 前完成代码变更任务",
         datetime: "",
         extra: "已耗时 8 天",
         status: "warning",
@@ -76,16 +76,16 @@ export const noticesData: TabItem[] = [
       },
       {
         avatar: "",
-        title: "新功能开发",
-        description: "开发多租户管理",
+        title: "作业提交",
+        description: "提交于 2024-06-12，需在 2024-06-20 前完成代码变更任务",
         datetime: "",
         extra: "进行中",
         type: "3"
       },
       {
         avatar: "",
-        title: "任务名称",
-        description: "任务需要在 2030-10-30 10:00 前启动",
+        title: "作业提交",
+        description: "提交于 2024-06-12，需在 2024-06-20 前完成代码变更任务",
         datetime: "",
         extra: "未开始",
         status: "info",
