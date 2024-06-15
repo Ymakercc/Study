@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: ""
+  name: '',
 });
 import BaseEcharts from '@/components/baseEcharts/index.vue';
 
@@ -49,12 +49,16 @@ const option = {
 </script>
 
 <template>
+<<<<<<< HEAD
   <div class="box">&nbsp;&nbsp;&nbsp;产品销售信息统计</div>
   <div class="pie">
     <BaseEcharts :options="option"></BaseEcharts>
    <div class="text">手机数码销量</div>  
    <div class="lost">剩余库存数量：5004件</div>  
   </div>
+=======
+  <div>text</div>
+>>>>>>> main
 </template>
 
 <style lang="scss" scoped>
