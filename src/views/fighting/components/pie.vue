@@ -3,8 +3,19 @@ defineOptions({
   name: 'Pie',
 });
 import BaseEcharts from '@/components/baseEcharts/index.vue';
+import { computed } from 'vue';
 
-const option = {
+// 定义props
+
+interface Pieprops {
+  title?: string;
+  data?: Array<any>;
+  remainingStock?: string;
+}
+const props = defineProps<Pieprops>();
+
+// 配置option
+const chartOptions = computed(() => ({
   tooltip: {
     trigger: 'item',
   },
@@ -37,21 +48,18 @@ const option = {
       labelLine: {
         show: false,
       },
-      data: [
-        { value: 1048, name: '手机销量' },
-        { value: 800, name: '数码产品销量' },
-      ],
+      data: props.data,
     },
   ],
-};
+}));
 </script>
 
 <template>
   <div>
     <div class="pie">
-      <BaseEcharts :options="option"></BaseEcharts>
-      <div class="text">手机数码销量</div>
-      <div class="lost">剩余库存数量：5004件</div>
+      <BaseEcharts :options="chartOptions"></BaseEcharts>
+      <div class="text">{{ title }}</div>
+      <div class="lost">剩余库存数量：{{ remainingStock }}件</div>
     </div>
   </div>
 </template>

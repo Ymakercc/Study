@@ -2,7 +2,7 @@
 defineOptions({
   name: '',
 });
-import { ref, reactive, watch, computed } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { getUserList } from '@/api/shopList'; // 引入封装好的函数
 import searchIcon from '@/assets/svg/search.svg?component';
 import Card from './components/Card.vue';

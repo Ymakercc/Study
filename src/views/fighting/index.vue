@@ -2,79 +2,94 @@
 defineOptions({
   name: '',
 });
+import { ref, computed } from 'vue';
 import Pie from './components/pie.vue';
-const option = {
-  tooltip: {
-    trigger: 'item',
+
+const pies = ref([
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
   },
-  legend: {
-    top: '80%',
-    left: 'center',
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
   },
-  series: [
-    {
-      name: '销售情况',
-      type: 'pie',
-      radius: ['60%', '50%'],
-      avoidLabelOverlap: false,
-      itemStyle: {
-        borderRadius: 10,
-        borderColor: '#fff',
-        borderWidth: 2,
-      },
-      label: {
-        show: false,
-        position: 'center',
-      },
-      emphasis: {
-        label: {
-          show: true,
-          fontSize: 20,
-          fontWeight: 'bold',
-        },
-      },
-      labelLine: {
-        show: false,
-      },
-      data: [
-        { value: 1048, name: '手机销量' },
-        { value: 800, name: '数码产品销量' },
-      ],
-    },
-  ],
-};
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
+  },
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
+  },
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
+  },
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
+  },
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
+  },
+  {
+    title: '手机销量数据',
+    data: [
+      { value: 1048, name: '手机销量' },
+      { value: 800, name: '数码产品销量' },
+    ],
+    remainingStock: '500',
+  },
+]);
 </script>
 
 <template>
-  <el-row style="padding-top: 10px">
-    <el-col :span="12"><span>产品销售信息统计</span></el-col>
-    <el-divider />
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
+  <el-card>
+    <template #header><span>产品销售信息统计</span> </template>
+    <el-row class=".row-with-margin">
+      <el-col v-for="(pie, index) in pies" :key="index" :span="6"
+        ><Pie
+          :title="pie.title"
+          :data="pie.data"
+          :remainingStock="pie.remainingStock"
+        ></Pie
+      ></el-col>
+    </el-row>
+  </el-card>
 </template>
 
 <style lang="scss" scoped>
-.pie {
-  display: flex;
-  justify-content: space-between;
+.row-with-margin {
+  margin-bottom: 20px;
 }
 </style>
