@@ -1,8 +1,9 @@
 <script setup lang="ts">
 defineOptions({
-  name: '',
+  name: 'Pie',
 });
-import Pie from './components/pie.vue';
+import BaseEcharts from '@/components/baseEcharts/index.vue';
+
 const option = {
   tooltip: {
     trigger: 'item',
@@ -46,35 +47,49 @@ const option = {
 </script>
 
 <template>
-  <el-row style="padding-top: 10px">
-    <el-col :span="12"><span>产品销售信息统计</span></el-col>
-    <el-divider />
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="6" v-for="n in 4" :key="n">
-      <Pie></Pie>
-    </el-col>
-  </el-row>
+  <div>
+    <div class="pie">
+      <BaseEcharts :options="option"></BaseEcharts>
+      <div class="text">手机数码销量</div>
+      <div class="lost">剩余库存数量：5004件</div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.box {
+  width: 100%;
+  height: 50px;
+  text-align: left;
+  line-height: 50px;
+  font-weight: bold;
+  border-bottom: 1px gainsboro solid;
+  margin-bottom: 5px;
+}
 .pie {
-  display: flex;
-  justify-content: space-between;
+  width: 300px;
+  height: 330px;
+  padding: auto;
+}
+
+.text {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin-top: -320px;
+  margin-left: 100px;
+  font-weight: bold;
+}
+
+.lost {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin-top: 240px;
+  margin-left: 50px;
+  background-color: rgb(232, 232, 232);
+  border-radius: 10px;
 }
 </style>
