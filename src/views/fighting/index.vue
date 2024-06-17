@@ -57,7 +57,7 @@ const pies = ref([
   {
     title: '家用百货数据',
     data: [
-      { value:315, name: '家居用品销量' },
+      { value: 315, name: '家居用品销量' },
       { value: 210, name: '百货销量' },
     ],
     remainingStock: '105',

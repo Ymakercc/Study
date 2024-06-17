@@ -11,7 +11,8 @@ export default {
       name: "Fighting",
       component: () => import("@/views/fighting/index.vue"),
       meta: {
-        title: "订单管理"
+        title: "订单管理",
+        roles:['admin']
       }
     },
     {

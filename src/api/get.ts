@@ -1,5 +1,6 @@
 import { http } from "@/utils/http";
- import { ApiObject } from "./utils";
+import { ApiObject } from "./utils";
+const { VITE_GODE_URL } = import.meta.env;
 
 // params传参
 // export const textRequest = (params?: object) => {
@@ -31,6 +32,14 @@ export type TextResult = {
     return http.request<any>("get",ApiObject.literatureapi, { data });
 };
   
-export const getWeather = (data?: object) => {
-    return http.request<any>("get",ApiObject.weatherapi , { data });
-  }
+export const getWeather = (data?:object) => {
+     return http.request<any>("get",ApiObject.weatherApi,{data});
+   }
+
+// export const getWeather = (key, city) => {
+//      return http.request<any>("get",VITE_GODE_URL+"weather/weatherInfo?key="+key+"&city="+city);
+// }
+ 
+// export const getOtherWeather = (data?: any) => {
+//      return http.request<any>("get","https://api.vvhan.com/api/weather?city=四川", { data });
+// }

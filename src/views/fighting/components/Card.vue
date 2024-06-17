@@ -1,13 +1,17 @@
 <script setup lang="ts">
+//封装卡片组件
 defineOptions({
   name: 'Card',
 });
 
+//定义接受数据的类型
 interface CardProps {
   title?: string;
   body?: string;
   footer?: string;
 }
+
+//使用props来接受父组件的数据变化
 const props = defineProps<CardProps>();
 </script>
 
@@ -25,9 +29,10 @@ const props = defineProps<CardProps>();
         ></path>
       </svg>
     </div>
-    <strong>{{ title }}</strong>
-    <div class="card__body">{{ body }}</div>
-    <span>{{ footer }}</span>
+    <!-- 在模板中渲染数据 -->
+    <strong>{{ props.title }}</strong>
+    <div class="card__body">{{ props.body }}</div>
+    <span>{{ props.footer }}</span>
   </div>
 </template>
 
