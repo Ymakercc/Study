@@ -2,7 +2,7 @@
 export default {
   path: "/fighting",
   meta: {
-    title: "励志",
+    title: "订单发货管理",
     icon: "streamline:shopping-bag-hand-bag-1-shopping-bag-purse-goods-item-products",
   },
   children: [
