@@ -27,5 +27,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "iconify.excludes": ["el"]
+  "iconify.excludes": [
+    "el"
+  ],
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": false
 }

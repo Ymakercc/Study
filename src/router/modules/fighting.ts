@@ -3,7 +3,7 @@ export default {
   path: "/fighting",
   meta: {
     title: "励志",
-    icon: "ep:home-filled",
+    icon: "streamline:shopping-bag-hand-bag-1-shopping-bag-purse-goods-item-products",
   },
   children: [
     {
@@ -11,7 +11,7 @@ export default {
       name: "Fighting",
       component: () => import("@/views/fighting/index.vue"),
       meta: {
-        title: "加油"
+        title: "订单管理"
       }
     },
     {
@@ -19,7 +19,7 @@ export default {
       name: "Effort",
       component: () => import("@/views/fighting/effort.vue"),
       meta: {
-        title: "努力"
+        title: "发货管理"
       }
     }
   ]
