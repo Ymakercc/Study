@@ -2,7 +2,7 @@
 defineOptions({
   name: 'Card',
 });
-import { defineProps } from 'vue';
+
 interface CardProps {
   title?: string;
   body?: string;
