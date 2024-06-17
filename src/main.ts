@@ -7,7 +7,7 @@ import { MotionPlugin } from "@vueuse/motion";
 import { createApp, type Directive } from "vue";
 import { useElementPlus } from "@/plugins/elementPlus";
 import { injectResponsiveStorage } from "@/utils/responsive";
-import AnimatedNumber from 'animated-number-vue3'
+import AnimatedNumber from 'animated-number-vue3';
 
 import Table from "@pureadmin/table";
 // import PureDescriptions from "@pureadmin/descriptions";
