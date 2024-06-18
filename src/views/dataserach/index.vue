@@ -101,9 +101,9 @@
               <div class="book-echarts">
                 <Pie
                   v-if="animatedNumberStates"
+                  ref="pieRef"
                   :value1="itemNumber[3]"
                   :value2="itemNumber[4]"
-                  ref="pieRef"
                 />
               </div>
             </div>
@@ -128,7 +128,7 @@
         </el-tabs>
       </div>
       <div class="curve-echarts">
-        <Curve v-if="curveStates" :valueList="itemNumber" ref="curveRef" />
+        <Curve v-if="curveStates" ref="curveRef" :valueList="itemNumber" />
       </div>
     </div>
   </div>

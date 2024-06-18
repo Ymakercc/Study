@@ -14,7 +14,8 @@ export default {
       meta: {
         icon: "ri:bank-card-line",
         title: "商品管理",
-        showParent: true
+        showParent: true,
+        roles:['admin']
       }
     }
   ]

@@ -19,7 +19,7 @@ const permissionRouter = {
       name: "PermissionPage",
       meta: {
         title: "页面权限",
-        roles: ["admin", "common"]
+        roles: ["admin"]
       }
     },
     {
@@ -37,6 +37,7 @@ const permissionRouter = {
     }
   ]
 };
+
 
 export default defineFakeRoute([
   {
