@@ -1,17 +1,18 @@
+<!-- 基于V3 -->
 <script setup lang="ts">
-//封装卡片组件
+//封装卡片组件 组件命名card
 defineOptions({
   name: 'Card',
 });
 
-//定义接受数据的类型
+//定义接受数据的类型 （定义一个TS接口CardProps，说明组件可以接受的 props（属性）。属性可选，类型string）
 interface CardProps {
   title?: string;
   body?: string;
   footer?: string;
 }
 
-//使用props来接受父组件的数据变化
+//使用props来接受父组件的数据变化 defineProps函数声明和接收父组件传递的props，也就是cardprops
 const props = defineProps<CardProps>();
 </script>
 
@@ -30,6 +31,7 @@ const props = defineProps<CardProps>();
       </svg>
     </div>
     <!-- 在模板中渲染数据 -->
+    <!-- 第一个通过插槽表达式显示传入的<title> 第二个显示body内容 三显示footer内容 -->
     <strong>{{ props.title }}</strong>
     <div class="card__body">{{ props.body }}</div>
     <span>{{ props.footer }}</span>
@@ -65,6 +67,7 @@ const props = defineProps<CardProps>();
   font-size: 1em;
 }
 
+// 过渡动效 除开span
 .card > :not(span) {
   transition: 0.3s cubic-bezier(0.6, 0.4, 0, 1);
 }

@@ -7,6 +7,7 @@ import { computed } from 'vue';
 
 // 定义props
 
+// 定义接受数据的类型
 interface Pieprops {
   title?: string;
   data?: Array<any>;

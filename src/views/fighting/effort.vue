@@ -2,6 +2,7 @@
 defineOptions({
   name: '',
 });
+// reactive接受对象类型的data 返回响应式的数据 ref接受简单data
 import { ref, reactive, computed } from 'vue';
 import { getUserList } from '@/api/shopList'; // 引入封装好的函数
 import searchIcon from '@/assets/svg/search.svg?component';
