@@ -44,10 +44,10 @@ onMounted(() => {
 
 <template>
   <div v-if="weatherData" class="weather">
-    <span>成都&nbsp;</span>
+    <span>成都&nbsp; </span>
     <span>{{ weatherData.type }}&nbsp;</span>
-    <span>{{ weatherData.high }}℃</span>
-    <span class="sm-hidden"> &nbsp;{{ weatherData.fengxaing }}&nbsp; </span>
+    <span>{{ weatherData.high }}</span>
+    <span class="sm-hidden"> &nbsp;{{ weatherData.fengxaing }}</span>
     <span class="sm-hidden">{{ weatherData.fengli }}风&nbsp;</span>
   </div>
   <div v-else class="weather">

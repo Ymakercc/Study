@@ -133,7 +133,7 @@ const handleDelete = index => {
       <el-col>
         <el-card>
           <template #header>订单列表</template>
-          <el-row :gutter="20" style="padding-bottom: 10px">
+          <el-row :gutter="20" style="padding-bottom: 20px">
             <el-col :span="8">
               <el-input placeholder="请输入内容">
                 <template #append>
@@ -213,7 +213,7 @@ const handleDelete = index => {
   max-width: 23ch;
   text-align: center;
   background: var(--bg);
-  padding: 1.5em;
+  padding: 3.5em;
   padding-block: 1.8em;
   border-radius: 5px;
   position: relative;
