@@ -4,9 +4,42 @@ defineOptions({
 });
 import BaseEcharts from '@/components/baseEcharts/index.vue';
 import { getText } from '@/api/get';
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { getCurrentTime } from '@/utils/getTime';
+import waether from './components/waether.vue';
 
-//掉用封装好厚的API以及Axios
+const currentTime = ref<{
+  year: number;
+  month: string;
+  day: string;
+  hour: string;
+  minute: string;
+  second: string;
+  weekday: string;
+}>({
+  year: 2024,
+  month: '',
+  day: '',
+  hour: '',
+  minute: '',
+  second: '',
+  weekday: '',
+});
+const timeInterval = ref(null);
+// 更新时间
+const updateTimeData = () => {
+  currentTime.value = getCurrentTime();
+};
+
+onMounted(() => {
+  updateTimeData();
+  timeInterval.value = setInterval(updateTimeData, 1000);
+});
+
+onBeforeUnmount(() => {
+  clearInterval(timeInterval.value);
+});
+//掉用封装好的API以及Axios
 const TextMessage = ref<{
   id: number;
   content: string;
@@ -188,7 +221,7 @@ const langugeOption = {
           <template #header>
             <div class="flex flex-center">
               <span>
-                <el-avatar size="large" />
+                <el-avatar size="large" src="src/assets/user.jpg" />
               </span>
               <div class="flex flex-col ml-4">
                 <span class="text-2xl opacity-80"> Hello, Admin</span>
@@ -220,6 +253,24 @@ const langugeOption = {
             </div>
           </template>
           <!-- card body -->
+          <div class="right cards">
+            <div class="time">
+              <div class="date">
+                <span>{{ currentTime.year }}&nbsp;年&nbsp;</span>
+                <span>{{ currentTime.month }}&nbsp;月&nbsp;</span>
+                <span>{{ currentTime.day }}&nbsp;日&nbsp;</span>
+                <span class="sm-hidden">{{ currentTime.weekday }}</span>
+              </div>
+              <div class="text">
+                <span>
+                  {{ currentTime.hour }}:{{ currentTime.minute }}:{{
+                    currentTime.second
+                  }}
+                </span>
+              </div>
+            </div>
+            <waether></waether>
+          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -273,5 +324,35 @@ const langugeOption = {
 }
 .flex {
   display: flex;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  animation: fade 0.5s;
+  .time {
+    font-size: 1.1rem;
+    text-align: center;
+    .date {
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      white-space: nowrap;
+    }
+    .text {
+      margin-top: 1px;
+      font-size: 2.25rem;
+      letter-spacing: 2px;
+      font-family: 'UnidreamLED';
+    }
+  }
+  .weather {
+    text-align: center;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+  }
 }
 </style>

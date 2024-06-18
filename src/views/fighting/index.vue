@@ -9,66 +9,66 @@ const pies = ref([
   {
     title: '手机销量数据',
     data: [
-      { value: 1048, name: '手机销量' },
+      { value: 10000, name: '手机销量' },
       { value: 800, name: '数码产品销量' },
     ],
-    remainingStock: '500',
+    remainingStock: '9813',
   },
   {
-    title: '手机销量数据',
+    title: '电脑办公数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 10000, name: '电脑销量' },
+      { value: 867, name: '办公产品销量' },
     ],
-    remainingStock: '500',
+    remainingStock: '9133',
   },
   {
-    title: '手机销量数据',
+    title: '家用电器数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 1345, name: '家用电器销量' },
+      { value: 867, name: '库存量' },
     ],
-    remainingStock: '500',
+    remainingStock: '867',
   },
   {
-    title: '手机销量数据',
+    title: '鞋帽服装数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 345, name: '鞋帽销量' },
+      { value: 260, name: '服装销量' },
     ],
-    remainingStock: '500',
+    remainingStock: '58',
   },
   {
-    title: '手机销量数据',
+    title: '食品保健数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 425, name: '食品销量' },
+      { value: 160, name: '保健销量' },
     ],
-    remainingStock: '500',
+    remainingStock: '258',
   },
   {
-    title: '手机销量数据',
+    title: '厨卫用具数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 3321, name: '厨卫用具销量' },
+      { value: 800, name: '库存量' },
     ],
-    remainingStock: '500',
+    remainingStock: '2392',
   },
   {
-    title: '手机销量数据',
+    title: '家用百货数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 315, name: '家居用品销量' },
+      { value: 210, name: '百货销量' },
     ],
-    remainingStock: '500',
+    remainingStock: '105',
   },
   {
-    title: '手机销量数据',
+    title: '图书影像数据',
     data: [
-      { value: 1048, name: '手机销量' },
-      { value: 800, name: '数码产品销量' },
+      { value: 145, name: '图书销量' },
+      { value: 110, name: '影像产品销量' },
     ],
-    remainingStock: '500',
+    remainingStock: '25',
   },
 ]);
 </script>

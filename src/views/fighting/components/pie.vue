@@ -99,5 +99,6 @@ const chartOptions = computed(() => ({
   margin-left: 50px;
   background-color: rgb(232, 232, 232);
   border-radius: 10px;
+  color: rgb(113, 32, 32);
 }
 </style>
