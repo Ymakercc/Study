@@ -3,37 +3,37 @@ import {
   type RouteRecordRaw,
   type RouteComponent,
   createWebHistory,
-  createWebHashHistory
-} from "vue-router";
-import { router } from "./index";
-import { isProxy, toRaw } from "vue";
-import { useTimeoutFn } from "@vueuse/core";
+  createWebHashHistory,
+} from 'vue-router';
+import { router } from './index';
+import { isProxy, toRaw } from 'vue';
+import { useTimeoutFn } from '@vueuse/core';
 import {
   isString,
   cloneDeep,
   isAllEmpty,
   intersection,
   storageLocal,
-  isIncludeAllChildren
-} from "@pureadmin/utils";
-import { getConfig } from "@/config";
-import { buildHierarchyTree } from "@/utils/tree";
-import { userKey, type DataInfo } from "@/utils/auth";
-import { type menuType, routerArrays } from "@/layout/types";
-import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { usePermissionStoreHook } from "@/store/modules/permission";
-const IFrame = () => import("@/layout/frame.vue");
+  isIncludeAllChildren,
+} from '@pureadmin/utils';
+import { getConfig } from '@/config';
+import { buildHierarchyTree } from '@/utils/tree';
+import { userKey, type DataInfo } from '@/utils/auth';
+import { type menuType, routerArrays } from '@/layout/types';
+import { useMultiTagsStoreHook } from '@/store/modules/multiTags';
+import { usePermissionStoreHook } from '@/store/modules/permission';
+const IFrame = () => import('@/layout/frame.vue');
 // https://cn.vitejs.dev/guide/features.html#glob-import
-const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
+const modulesRoutes = import.meta.glob('/src/views/**/*.{vue,tsx}');
 
 // 动态路由
-import { getAsyncRoutes } from "@/api/routes";
+import { getAsyncRoutes } from '@/api/routes';
 
 function handRank(routeInfo: any) {
   const { name, path, parentId, meta } = routeInfo;
   return isAllEmpty(parentId)
     ? isAllEmpty(meta?.rank) ||
-      (meta?.rank === 0 && name !== "Home" && path !== "/")
+      (meta?.rank === 0 && name !== 'Home' && path !== '/')
       ? true
       : false
     : false;
@@ -95,7 +95,7 @@ function filterNoPermissionTree(data: RouteComponent[]) {
 }
 
 /** 通过指定 `key` 获取父级路径集合，默认 `key` 为 `path` */
-function getParentPaths(value: string, routes: RouteRecordRaw[], key = "path") {
+function getParentPaths(value: string, routes: RouteRecordRaw[], key = 'path') {
   // 深度遍历查找
   function dfs(routes: RouteRecordRaw[], value: string, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
@@ -140,11 +140,11 @@ function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
 }
 
 function addPathMatch() {
-  if (!router.hasRoute("pathMatch")) {
+  if (!router.hasRoute('pathMatch')) {
     router.addRoute({
-      path: "/:pathMatch(.*)",
-      name: "pathMatch",
-      redirect: "/error/404"
+      path: '/:pathMatch(.*)',
+      name: 'pathMatch',
+      redirect: '/error/404',
     });
   }
 }
@@ -171,7 +171,7 @@ function handleAsyncRoutes(routeList) {
           if (!router.hasRoute(v?.name)) router.addRoute(v);
           const flattenRouters: any = router
             .getRoutes()
-            .find(n => n.path === "/");
+            .find(n => n.path === '/');
           router.addRoute(flattenRouters);
         }
       }
@@ -179,11 +179,11 @@ function handleAsyncRoutes(routeList) {
     usePermissionStoreHook().handleWholeMenus(routeList);
   }
   if (!useMultiTagsStoreHook().getMultiTagsCache) {
-    useMultiTagsStoreHook().handleTags("equal", [
+    useMultiTagsStoreHook().handleTags('equal', [
       ...routerArrays,
       ...usePermissionStoreHook().flatteningRoutes.filter(
         v => v?.meta?.fixedTag
-      )
+      ),
     ]);
   }
   addPathMatch();
@@ -193,7 +193,7 @@ function handleAsyncRoutes(routeList) {
 function initRouter() {
   if (getConfig()?.CachingAsyncRoutes) {
     // 开启动态路由缓存本地localStorage
-    const key = "async-routes";
+    const key = 'async-routes';
     const asyncRouteList = storageLocal().getItem(key) as any;
     if (asyncRouteList && asyncRouteList?.length > 0) {
       return new Promise(resolve => {
@@ -247,14 +247,14 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
   if (routesList.length === 0) return routesList;
   const newRoutesList: RouteRecordRaw[] = [];
   routesList.forEach((v: RouteRecordRaw) => {
-    if (v.path === "/") {
+    if (v.path === '/') {
       newRoutesList.push({
         component: v.component,
         name: v.name,
         path: v.path,
         redirect: v.redirect,
         meta: v.meta,
-        children: []
+        children: [],
       });
     } else {
       newRoutesList[0]?.children.push({ ...v });
@@ -266,33 +266,33 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
 /** 处理缓存路由（添加、删除、刷新） */
 function handleAliveRoute({ name }: ToRouteType, mode?: string) {
   switch (mode) {
-    case "add":
+    case 'add':
       usePermissionStoreHook().cacheOperate({
-        mode: "add",
-        name
+        mode: 'add',
+        name,
       });
       break;
-    case "delete":
+    case 'delete':
       usePermissionStoreHook().cacheOperate({
-        mode: "delete",
-        name
+        mode: 'delete',
+        name,
       });
       break;
-    case "refresh":
+    case 'refresh':
       usePermissionStoreHook().cacheOperate({
-        mode: "refresh",
-        name
+        mode: 'refresh',
+        name,
       });
       break;
     default:
       usePermissionStoreHook().cacheOperate({
-        mode: "delete",
-        name
+        mode: 'delete',
+        name,
       });
       useTimeoutFn(() => {
         usePermissionStoreHook().cacheOperate({
-          mode: "add",
-          name
+          mode: 'add',
+          name,
         });
       }, 100);
   }
@@ -310,7 +310,7 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
       v.redirect = v.children[0].path;
     // 父级的name属性取值：如果子级存在且父级的name属性不存在，默认取第一个子级的name；如果子级存在且父级的name属性存在，取存在的name属性，会覆盖默认值（注意：测试中发现父级的name不能和子级name重复，如果重复会造成重定向无效（跳转404），所以这里给父级的name起名的时候后面会自动加上`Parent`，避免重复）
     if (v?.children && v.children.length && !v.name)
-      v.name = (v.children[0].name as string) + "Parent";
+      v.name = (v.children[0].name as string) + 'Parent';
     if (v.meta?.frameSrc) {
       v.component = IFrame;
     } else {
@@ -330,21 +330,21 @@ function addAsyncRoutes(arrRoutes: Array<RouteRecordRaw>) {
 /** 获取路由历史模式 https://next.router.vuejs.org/zh/guide/essentials/history-mode.html */
 function getHistoryMode(routerHistory): RouterHistory {
   // len为1 代表只有历史模式 为2 代表历史模式中存在base参数 https://next.router.vuejs.org/zh/api/#%E5%8F%82%E6%95%B0-1
-  const historyMode = routerHistory.split(",");
+  const historyMode = routerHistory.split(',');
   const leftMode = historyMode[0];
   const rightMode = historyMode[1];
   // no param
   if (historyMode.length === 1) {
-    if (leftMode === "hash") {
-      return createWebHashHistory("");
-    } else if (leftMode === "h5") {
-      return createWebHistory("");
+    if (leftMode === 'hash') {
+      return createWebHashHistory('');
+    } else if (leftMode === 'h5') {
+      return createWebHistory('');
     }
   } //has param
   else if (historyMode.length === 2) {
-    if (leftMode === "hash") {
+    if (leftMode === 'hash') {
       return createWebHashHistory(rightMode);
-    } else if (leftMode === "h5") {
+    } else if (leftMode === 'h5') {
       return createWebHistory(rightMode);
     }
   }
@@ -384,7 +384,7 @@ function getTopMenu(tag = false): menuType {
   const topMenu = handleTopMenu(
     usePermissionStoreHook().wholeMenus[0]?.children[0]
   );
-  tag && useMultiTagsStoreHook().handleTags("push", topMenu);
+  tag && useMultiTagsStoreHook().handleTags('push', topMenu);
   return topMenu;
 }
 
@@ -404,5 +404,5 @@ export {
   handleAliveRoute,
   formatTwoStageRoutes,
   formatFlatteningRoutes,
-  filterNoPermissionTree
+  filterNoPermissionTree,
 };

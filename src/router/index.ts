@@ -1,12 +1,12 @@
 // import "@/utils/sso";
-import Cookies from "js-cookie";
-import { getConfig } from "@/config";
-import NProgress from "@/utils/progress";
-import { buildHierarchyTree } from "@/utils/tree";
-import remainingRouter from "./modules/remaining";
-import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
-import { usePermissionStoreHook } from "@/store/modules/permission";
-import { isUrl, openLink, storageLocal, isAllEmpty } from "@pureadmin/utils";
+import Cookies from 'js-cookie';
+import { getConfig } from '@/config';
+import NProgress from '@/utils/progress';
+import { buildHierarchyTree } from '@/utils/tree';
+import remainingRouter from './modules/remaining';
+import { useMultiTagsStoreHook } from '@/store/modules/multiTags';
+import { usePermissionStoreHook } from '@/store/modules/permission';
+import { isUrl, openLink, storageLocal, isAllEmpty } from '@pureadmin/utils';
 import {
   ascending,
   getTopMenu,
@@ -16,29 +16,29 @@ import {
   findRouteByPath,
   handleAliveRoute,
   formatTwoStageRoutes,
-  formatFlatteningRoutes
-} from "./utils";
+  formatFlatteningRoutes,
+} from './utils';
 import {
   type Router,
   createRouter,
   type RouteRecordRaw,
-  type RouteComponent
-} from "vue-router";
+  type RouteComponent,
+} from 'vue-router';
 import {
   type DataInfo,
   userKey,
   removeToken,
-  multipleTabsKey
-} from "@/utils/auth";
+  multipleTabsKey,
+} from '@/utils/auth';
 
 /** 自动导入全部静态路由，无需再手动引入！匹配 src/router/modules 目录（任何嵌套级别）中具有 .ts 扩展名的所有文件，除了 remaining.ts 文件
  * 如何匹配所有文件请看：https://github.com/mrmlnc/fast-glob#basic-syntax
  * 如何排除文件请看：https://cn.vitejs.dev/guide/features.html#negative-patterns
  */
 const modules: Record<string, any> = import.meta.glob(
-  ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
+  ['./modules/**/*.ts', '!./modules/**/remaining.ts'],
   {
-    eager: true
+    eager: true,
   }
 );
 
@@ -81,7 +81,7 @@ export const router: Router = createRouter({
         }
       }
     });
-  }
+  },
 });
 
 /** 重置路由 */
@@ -101,15 +101,15 @@ export function resetRouter() {
 }
 
 /** 路由白名单 */
-const whiteList = ["/login"];
+const whiteList = ['/login'];
 
 const { VITE_HIDE_HOME } = import.meta.env;
 
 router.beforeEach((to: ToRouteType, _from, next) => {
   if (to.meta?.keepAlive) {
-    handleAliveRoute(to, "add");
+    handleAliveRoute(to, 'add');
     // 页面整体刷新和点击标签页刷新
-    if (_from.name === undefined || _from.name === "Redirect") {
+    if (_from.name === undefined || _from.name === 'Redirect') {
       handleAliveRoute(to);
     }
   }
@@ -118,7 +118,7 @@ router.beforeEach((to: ToRouteType, _from, next) => {
   const externalLink = isUrl(to?.name as string);
   if (!externalLink) {
     to.matched.some(item => {
-      if (!item.meta.title) return "";
+      if (!item.meta.title) return '';
       const Title = getConfig().Title;
       if (Title) document.title = `${item.meta.title} | ${Title}`;
       else document.title = item.meta.title as string;
@@ -131,11 +131,11 @@ router.beforeEach((to: ToRouteType, _from, next) => {
   if (Cookies.get(multipleTabsKey) && userInfo) {
     // 无权限跳转403页面
     if (to.meta?.roles && !isOneOfArray(to.meta?.roles, userInfo?.roles)) {
-      next({ path: "/error/403" });
+      next({ path: '/error/403' });
     }
     // 开启隐藏首页后在浏览器地址栏手动输入首页welcome路由则跳转到404页面
-    if (VITE_HIDE_HOME === "true" && to.fullPath === "/welcome") {
-      next({ path: "/error/404" });
+    if (VITE_HIDE_HOME === 'true' && to.fullPath === '/welcome') {
+      next({ path: '/error/404' });
     }
     if (_from?.name) {
       // name为超链接
@@ -149,7 +149,7 @@ router.beforeEach((to: ToRouteType, _from, next) => {
       // 刷新
       if (
         usePermissionStoreHook().wholeMenus.length === 0 &&
-        to.path !== "/login"
+        to.path !== '/login'
       ) {
         initRouter().then((router: Router) => {
           if (!useMultiTagsStoreHook().getMultiTagsCache) {
@@ -164,17 +164,17 @@ router.beforeEach((to: ToRouteType, _from, next) => {
               if (isAllEmpty(route.parentId) && route.meta?.backstage) {
                 // 此处为动态顶级路由（目录）
                 const { path, name, meta } = route.children[0];
-                useMultiTagsStoreHook().handleTags("push", {
+                useMultiTagsStoreHook().handleTags('push', {
                   path,
                   name,
-                  meta
+                  meta,
                 });
               } else {
                 const { path, name, meta } = route;
-                useMultiTagsStoreHook().handleTags("push", {
+                useMultiTagsStoreHook().handleTags('push', {
                   path,
                   name,
-                  meta
+                  meta,
                 });
               }
             }
@@ -186,12 +186,12 @@ router.beforeEach((to: ToRouteType, _from, next) => {
       toCorrectRoute();
     }
   } else {
-    if (to.path !== "/login") {
+    if (to.path !== '/login') {
       if (whiteList.indexOf(to.path) !== -1) {
         next();
       } else {
         removeToken();
-        next({ path: "/login" });
+        next({ path: '/login' });
       }
     } else {
       next();

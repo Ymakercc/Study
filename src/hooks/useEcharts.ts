@@ -1,13 +1,13 @@
 import {
-  Ref,
+  type Ref,
   shallowRef,
   unref,
   onMounted,
   onDeactivated,
   onBeforeUnmount,
-} from "vue";
+} from 'vue';
 
-import echarts from "@/components/baseEcharts/config.ts";
+import echarts from '@/components/baseEcharts/config.ts';
 
 export type EChartsCoreOption = echarts.EChartsCoreOption;
 
@@ -37,16 +37,16 @@ const useEcharts = (elRef: Ref<HTMLDivElement>, options: EChartsCoreOption) => {
   };
 
   onMounted(() => {
-    window.addEventListener("resize", resize);
+    window.addEventListener('resize', resize);
   });
 
   // 页面keepAlive时，不监听页面
   onDeactivated(() => {
-    window.removeEventListener("resize", resize);
+    window.removeEventListener('resize', resize);
   });
 
   onBeforeUnmount(() => {
-    window.removeEventListener("resize", resize);
+    window.removeEventListener('resize', resize);
   });
 
   return {

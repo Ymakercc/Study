@@ -1,5 +1,5 @@
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
-import * as echarts from "echarts/core";
+import * as echarts from 'echarts/core';
 
 // 引入内置组件，组件后缀都为Component
 import {
@@ -19,13 +19,13 @@ import {
   CalendarComponent,
   GraphicComponent,
   TransformComponent, // 数据转换器组件(filter, sort)
-} from "echarts/components";
+} from 'echarts/components';
 
 // 引入渲染器：echarst默认使用canvas渲染，引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
-import { CanvasRenderer, SVGRenderer } from "echarts/renderers";
+import { CanvasRenderer, SVGRenderer } from 'echarts/renderers';
 
 // 标签自动布局、全局过渡动画等特性
-import { LabelLayout, UniversalTransition } from "echarts/features";
+import { LabelLayout, UniversalTransition } from 'echarts/features';
 
 // 引入图表类型，后缀都为Chart
 import {
@@ -35,7 +35,7 @@ import {
   MapChart,
   RadarChart,
   PictorialBarChart,
-} from "echarts/charts";
+} from 'echarts/charts';
 
 // 注册必须的组件
 echarts.use([
